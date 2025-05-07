@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>Forest Fire Prediction System</h1>
+            <p class="subtitle">Predict the risk of forest fire based on environmental conditions.</p>
+        </header>
+        
+        <div class="card-container">
+            <!-- Manual Prediction Form -->
+            <div class="card">
+                <h2>Manual Prediction</h2>
+                <form action="/predict" method="post">
+                    <div class="input-group">
+                        <label for="temp">Temperature (°C):</label>
+                        <input type="text" id="temp" name="temp" placeholder="Enter temperature">
+                    </div>
+                    <div class="input-group">
+                        <label for="rh">Humidity (%):</label>
+                        <input type="text" id="rh" name="rh" placeholder="Enter humidity">
+                    </div>
+                    <div class="input-group">
+                        <label for="wind">Wind Speed (km/h):</label>
+                        <input type="text" id="wind" name="wind" placeholder="Enter wind speed">
+                    </div>
+                    <div class="input-group">
+                        <label for="rain">Rain (mm):</label>
+                        <input type="text" id="rain" name="rain" placeholder="Enter rainfall">
+                    </div>
+                    <button type="submit" class="btn primary-btn">Predict</button>
+                </form>
+            </div>
+
+            <!-- Live Weather Prediction Form -->
+            <div class="card">
+                <h2>Live Weather Prediction</h2>
+                <form action="/predict_live" method="post">
+                    <button type="submit" class="btn secondary-btn">Get Live Prediction</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Prediction Result -->
+        <div class="result-container">
+            <h3>Prediction Result</h3>
+            <div class="result-box">
+                <h2>{{ result }}</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
